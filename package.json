@@ -1,12 +1,14 @@
 {
-  "dependencies": {
-    "cosmicjs": "^2.39.0",
-    "express": "^4.15.2",
-    "hogan-express": "^0.5.2",
-    "nodemon": "^1.11.0"
-  },
+  "name": "DarkShySBlog",
+  "version": "1.0.0",
+  "description": "Блог серой пегаски",
+  "main": "index.js",
   "scripts": {
-    "start": "node app.js",
-    "development": "nodemon app.js"
-  }
+    "test": "echo "Error: no test specified" && exit 1"
+  },
+  "keywords": [
+    "blog"
+  ],
+  "author": "",
+  "license": "ISC"
 }
