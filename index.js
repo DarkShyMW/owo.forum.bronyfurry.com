@@ -32,8 +32,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 app.get('/', function(req, res) {
-    var filePath = './public/example.md';   // Set this to your markdown file.
-    var css = 'atom-one-dark.css';          // Set this to your markdown code syntax highlighting.
+    var filePath = './public/example.md';   // Устанавливаем файл с md
+    var css = 'atom-one-dark.css';          // Подсветка синтаксиса
 
     var rawMd = fs.readFileSync(filePath, 'utf8');
     var html = md.render(rawMd);
