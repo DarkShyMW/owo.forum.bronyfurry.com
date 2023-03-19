@@ -1,0 +1,39 @@
+{
+  "name": "owo.forum.bronyfurry.com",
+  "version": "0.0.1",
+  "description": "Gay Solutions",
+  "main": "index.js",
+  "dependencies": {
+    "balanced-match": "^1.0.2",
+    "brace-expansion": "^1.1.11",
+    "commander": "^2.15.1",
+    "concat-map": "^0.0.1",
+    "ejs": "^2.6.1",
+    "express-generator": "^4.16.1",
+    "minimatch": "^3.0.4",
+    "minimist": "^0.0.8",
+    "mkdirp": "^0.5.1",
+    "sorted-object": "^2.0.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DarkShyMW/owo.forum.bronyfurry.com.git"
+  },
+  "keywords": [
+    "gay",
+    "owo",
+    "furry",
+    "brony",
+    "yiff"
+  ],
+  "author": "DarkShy",
+  "license": " GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/DarkShyMW/owo.forum.bronyfurry.com/issues"
+  },
+  "homepage": "https://github.com/DarkShyMW/owo.forum.bronyfurry.com#readme"
+}
