@@ -1,12 +1,2 @@
-const express = require("express");
- 
-const app = express();
- 
-app.use(express.static(__dirname + "/theme"));
- 
-app.use("/", function(request, response){
-     
-    response.send("<h1>Главная страница</h1>");
-});
- 
-app.listen(1488);
+const http = require("http");
+http.createServer().listen(1488);
