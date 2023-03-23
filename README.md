@@ -1,8 +1,8 @@
-Typecho Blogging Platform
+OwO Blogging Platform
 =========================
 
-Typecho is a PHP-based blog software and is designed to be the most powerful blog engine in the world.
-Typecho is released under the GNU General Public License 2.0.
+OwO is a PHP-based blog software and is designed to be the most powerful blog engine in the world.
+OwO is released under the GNU General Public License 2.0.
 
 ## Main Features
 
@@ -21,10 +21,4 @@ Typecho is released under the GNU General Public License 2.0.
   * SQLite 3.7.11 or higher
   * PostgreSQL 9.1 or higher
 
-## Screenshots
-
-![Typecho](https://typecho.org/usr/themes/bluecode/img/screenshot/st1.png)
-
-## Contributing
-
-Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
+    
