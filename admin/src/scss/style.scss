@@ -1,0 +1,927 @@
+/* vim: set et sw=2 ts=2 sts=2 fdm=marker ff=unix fenc=utf8 */
+/**
+* OWO 后台样式
+*
+* @author  OWO Team
+* @since   2008-09-26
+* @update  2013-11-02
+* @link    http://www.owo.org/
+* @version 0.9
+*/
+
+
+/**
+* OWO 全局样式
+*/
+
+html {
+  height: 100%;
+}
+
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background: #F6F6F3;
+  color: #444;
+  font-size: 87.5%;
+  line-height: 1.5;
+}
+
+a {
+  color: #467B96;
+  text-decoration: none;
+  &:hover {
+    color: #499BC3;
+    text-decoration: underline;
+  }
+}
+
+code, pre, .mono { 
+  font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
+.p { margin: 1em 0; }
+
+.body-100 {
+  height: 100%;
+}
+
+a.balloon-button {
+  display: inline-block;
+  padding: 0 6px;
+  min-width: 12px;
+  height: 18px;
+  line-height: 18px;
+  background: #D8E7EE;
+  font-size: .85714em;
+  text-align: center;
+  text-decoration: none;
+  
+  /** 修正ie中文不对齐 */
+  zoom:1;
+  
+  border-radius: 30px;
+  white-space: nowrap;
+}
+
+a.button:hover, a.balloon-button:hover {
+  background-color: #A5CADC;
+  color: #FFF;
+  text-decoration: none;
+}
+
+@import "vars";
+@import "forms";
+@import "buttons";
+@import "messages";
+@import "pagenavi";
+
+@import "header";
+@import "footer";
+
+/** 顶部消息样式 by 70 */
+.popup {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 0;
+  padding: 8px 0;
+  border: none;
+  width: 100%;
+  z-index: 10;
+  text-align: center;
+
+  border-radius: 0;
+}
+
+.popup ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+.popup ul li {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+/**
+* logo 的样式
+*/
+.logo {
+}
+
+/**
+* 载入状态
+*/
+.loading {
+  padding-left: 20px !important;
+  background: transparent url(../img/ajax-loader.gif) no-repeat left center;
+}
+
+
+/**
+* 典型配置选项
+*/
+.owo-option {
+  list-style: none;
+  margin: 1em 0;
+  padding: 0;
+
+  &-submit li {
+    border-bottom: none;
+  }
+
+  label {
+    &.owo-label {
+      display: block;
+      margin-bottom: .5em;
+      font-weight: bold;
+    }
+
+    &.required:after {
+      content: " *";
+      color: #B94A48;
+    }
+  }
+
+  span {
+    margin-right: 15px;
+  }
+
+  .description {
+    margin: .5em 0 0;
+    color: #999;
+    font-size: .92857em;
+  }
+
+  input.file {
+    width: 100%;
+    margin: .7em 0;
+  }
+}
+
+.front-archive {
+  padding-left: 1.5em;
+}
+
+.profile-avatar {
+  width: 220px;
+  height: 220px;
+  border-radius: 10px;
+}
+
+/** 增加配置面板内部的错误样式 by 70 */
+
+
+/**
+* 欢迎界面
+*/
+
+#owo-welcome {
+  margin: 1em 0;
+  padding: 1em 2em;
+  background-color: #E9E9E6;
+}
+
+.welcome-board {
+  color: #999;
+  font-size: 1.15em;
+  em {
+    color: #444;
+    font-size: 2em;
+    font-style: normal;
+    font-family: Georgia, serif;
+  }
+}
+
+#start-link {
+  margin-bottom: 25px;
+  padding: 0 0 35px;
+  border-bottom: 1px solid #ECECEC;
+  li {
+    float: left;
+    margin-right: 1.5em;
+  }
+  .balloon {
+    margin-top: 2px;
+  }
+}
+
+.latest-link {
+  li {
+    white-space: nowrap;
+    overflow: hidden; 
+    text-overflow: ellipsis;
+  }
+  span {
+    display: inline-block;
+    margin-right: 4px;
+    padding-right: 8px;
+    border-right: 1px solid #ECECEC;
+    width: 37px;
+    text-align: right;
+    color: #999;
+  }
+}
+
+.update-check {
+  font-size: 14px;
+}
+
+/**
+* 登录框
+*/
+.owo-login-wrap {
+  display: table;
+  margin: 0 auto;
+  height: 100%;
+}
+.owo-login {
+  display: table-cell;
+  padding: 30px 0 100px;
+  width: 280px;
+  text-align: center;
+  vertical-align: middle;
+  h1 {
+    margin: 0 0 1em; 
+  }
+}
+
+.owo-login .more-link {
+  margin-top: 2em;
+  color: #CCC;
+}
+.owo-login .more-link a { margin: 0 3px; }
+
+/**
+* 标题
+*/
+.owo-page-title {
+}
+.owo-page-title h2 {
+  margin: 25px 0 10px;
+  font-size: 1.28571em;
+}
+.owo-page-title h2 a {
+  margin-left: 10px;
+  padding: 3px 8px;
+  background: #E9E9E6;
+  font-size: .8em;
+
+  border-radius: 2px;
+}
+.owo-page-title h2 a:hover {
+  text-decoration: none;
+}
+
+/**
+* 后台页面主体
+*/
+
+
+/**
+* 主页主体
+*/
+.owo-dashboard {
+}
+.owo-dashboard ul {
+  list-style: none;
+  padding: 0;
+}
+.owo-dashboard li {
+  margin-bottom: 5px;
+}
+
+
+/**
+* 标签页
+*/
+.owo-option-tabs {
+  list-style: none;
+  margin: 1em 0 0;
+  padding: 0;
+  font-size: 13px;
+  text-align: center;
+  &.fix-tabs {
+    margin-bottom: 1em;
+  }
+}
+
+.owo-option-tabs a {
+  display: block;
+  margin-right: -1px;
+  border: 1px solid #D9D9D6;
+  padding: 0 15px;
+  height: 26px;
+  line-height: 26px;
+  color: #666;
+  box-sizing: border-box;
+  
+}
+.owo-option-tabs a:hover {
+  background-color: #E9E9E6;
+  color: #666;
+  text-decoration: none;
+}
+
+.owo-option-tabs li {
+  float: left;
+  &:first-child a {
+    border-radius: 2px 0 0 2px;
+  }
+  &:last-child a {
+    border-radius: 0 2px 2px 0;
+  }
+}
+
+.owo-option-tabs.right {
+  float: right;
+}
+
+.owo-option-tabs li.current a,
+.owo-option-tabs li.active a {
+  background-color: #E9E9E6;
+}
+
+
+/**
+* 表格列表页
+*/
+
+/**
+* 列表页选项
+*/
+.owo-list .owo-pager {
+}
+
+.owo-list-operate {
+  margin: 1em 0;
+}
+
+.owo-list-operate input,
+.owo-list-operate button,
+.owo-list-operate select {
+  vertical-align: bottom;
+}
+
+.owo-list-operate input[type="checkbox"] {
+  vertical-align: text-top;
+}
+
+@media (min-width: $screen-phone) {
+  .owo-list-operate {
+    .operate {
+      float: left;
+    }
+    .search {
+      float: right;
+    }
+  }
+}
+
+.owo-list-operate span.operate-delete, a.operate-delete,
+.owo-list-operate span.operate-button-delete, a.operate-button-delete {
+  color: #B94A48;
+}
+
+a.operate-edit {
+  color: #007700;
+}
+
+a.operate-reply {
+  color: #545c30;
+}
+
+.owo-list-operate a:hover {
+  text-decoration: none;
+}
+
+/**
+* 列表表格
+*/
+/** 增加表格标题 by 70 */
+.owo-list-table-title {
+  margin: 1em 0;
+  color: #999;
+  text-align: center;
+}
+.owo-table-wrap {
+  padding: 30px;
+  background: #FFF;
+}
+.owo-list-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+
+  &.deactivate {
+    color: #999;
+  }
+
+  .right {
+    text-align: right;
+  }
+
+  th {
+    padding: 0 10px 10px;
+    border-bottom: 2px solid #F0F0EC;
+    text-align: left;
+  }
+
+  td {
+    padding: 10px;
+    border-top: 1px solid #F0F0EC;
+    word-break: break-all;
+
+    pre {
+        overflow: auto;
+    }
+  }
+
+  .status {
+    margin-left: 5px;
+    color: #999;
+    font-size: .92857em;
+    font-style: normal;
+  }
+
+  tbody tr:hover td {
+    background-color: #F6F6F3;
+  }
+
+  tbody tr.checked td {
+    background-color: #FFF9E8;
+  }
+
+  tr td .hidden-by-mouse {
+    opacity: 0; 
+  }
+
+  tr:hover td .hidden-by-mouse {
+    opacity: 1;
+  }
+}
+
+.warning {
+  color: #B94A48;
+}
+
+
+/**
+* 评论管理
+*/
+
+.comment-reply-content {
+  position: relative;
+  margin: 1em 0;
+  padding: 0 1em;
+  border: 1px solid transparent;
+  background-color: #F0F0EC;
+}
+.comment-reply-content:after {
+  position: absolute;
+  right: 1em;
+  border: 8px solid #F0F0EC;
+  border-color: #F0F0EC #F0F0EC transparent transparent;
+  content: " ";
+}
+
+.comment-meta span,
+.comment-date {
+  font-size: .92857em;
+  color: #999;
+}
+
+.comment-action a, .comment-action span { margin-right: 4px; }
+
+.comment-edit label {
+  display: block;
+}
+
+.comment-content img {
+  max-width: 100%;
+}
+
+@media (max-width: $screen-phone - 1px) {
+  .comment-edit {
+    display: flex;
+    flex-direction: column;
+    width: 90vw;
+  }
+  .comment-edit td:first-child { display: none; }
+}
+
+/**
+* 评论回复
+*/
+#owo-respond {
+  padding: 10px;
+  display: none;
+}
+
+
+/**
+* 模板列表
+*/
+.owo-theme-list {
+}
+
+.owo-theme-list .theme-item {
+}
+
+.owo-theme-list td {
+}
+
+.owo-theme-list img {
+  margin: 1em 0;
+  max-width: 100%;
+  max-height: 240px;
+}
+
+.owo-theme-list cite {
+  font-style: normal;
+  color: #999;
+}
+
+.owo-theme-list tbody tr.current td {
+  background-color: #FFF9E8;
+}
+
+
+/**
+* 后台配置项
+*/
+
+.owo-page-main .owo-option input.text {
+  width: 100%;
+}
+
+.owo-page-main .owo-option input.num {
+  width: 40px;
+}
+
+.owo-page-main .owo-option textarea {
+  width: 100%;
+  height: 100px;
+}
+
+.owo-page-main .owo-option .multiline {
+  display: block;
+  margin: .3em 0;
+  &.hidden {
+    display: none;
+  }
+}
+
+
+/**
+* 编辑模板
+*/
+.owo-select-theme {
+  height: 25px;
+  line-height: 25px;
+  margin: 15px 0px;
+}
+
+.owo-select-theme h5 {
+  color: #E47E00;
+  font-weight: bold;
+  float: left;
+  font-size: 14px;
+  width: 120px;
+  margin-right: 10px;
+}
+
+.owo-select-theme select {
+  width: 150px;
+}
+
+/**
+* 编辑模板（编辑详情）
+*/
+
+.owo-edit-theme ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.owo-edit-theme li {
+  padding: 3px 10px;
+}
+
+.owo-edit-theme .current {
+  background-color: #E6E6E3;
+}
+.owo-edit-theme .current a {
+  color: #444;
+}
+
+.owo-edit-theme textarea {
+  font-size: .92857em;
+  line-height: 1.2;
+  height: 500px;
+}
+
+/**
+* 编写页面
+*/
+
+.owo-post-area .edit-draft-notice {
+  color: #999;
+  font-size: .92857em;
+}
+.owo-post-area .edit-draft-notice a { color: #B94A48; }
+
+.owo-post-area .owo-label {
+  display: block;
+  margin: 1em 0 -0.5em;
+  font-weight: bold;
+}
+
+.owo-post-area #auto-save-message {
+  display: block;
+  margin-top: 0.5em;
+  color: #999;
+  font-size: .92857em;
+}
+
+.owo-post-area .submit .right button {
+  margin-left: 5px;
+}
+
+.owo-post-area .right {
+  float: right;
+}
+
+.owo-post-area .left {
+  float: left;
+}
+
+.owo-post-area input.text {
+}
+
+.owo-post-area .out-date {
+  border: 1px solid #D3DBB3;
+  padding: 3px;
+  background: #fff;
+}
+
+.owo-post-area input.title {
+  font-size: 1.17em;
+  font-weight: bold;
+}
+.owo-post-area .url-slug {
+  margin-top: -0.5em;
+  color: #AAA;
+  font-size: .92857em;
+  word-break: break-word;
+}
+.owo-post-area #slug {
+  padding: 2px;
+  border: none;
+  background: #FFFBCC;
+  color: #666;
+}
+
+.owo-post-area #text {
+  resize: none;
+}
+
+#advance-panel {
+  display: none;
+}
+
+#custom-field {
+  margin: 1em 0;
+  padding: 10px 15px;
+  background: #FFF;
+  &.fold {
+    table, .description { display: none; }
+  }
+
+  .description {
+    margin-top: 10px;
+    text-align: right;
+    button {
+      float: left;
+    }
+  }
+
+  p.description {
+    text-align: left;
+  }
+
+  .owo-label {
+    margin: 0;
+    a {
+      display: block;
+      color: #444;
+      &:hover {
+        color: #467B96;
+        text-decoration: none;
+      }
+    }
+  }
+  table {
+    margin-top: 10px;
+  }
+  td {
+    padding: 10px 5px;
+    font-size: .92857em;
+    border-bottom: 1px solid #F0F0EC;
+    vertical-align: top;
+    label {
+      font-size: 1em;
+      font-weight: normal;
+    }
+  }
+  select { height: 27px; }
+}
+
+.owo-post-area .is-draft {
+background: #FFF1A8;
+}
+
+.owo-post-option .description {
+  margin-top: -0.5em;
+  color: #999;
+  font-size: .92857em;
+}
+
+.category-option ul {
+  list-style: none;
+  border: 1px solid #D9D9D6;
+  padding: 6px 12px;
+  max-height: 240px;
+  overflow: auto;
+  background-color: #FFF;
+  border-radius: 2px;
+}
+.category-option li {
+  margin: 3px 0;
+}
+
+.visibility-option ul,
+.allow-option ul {
+  list-style: none;
+  padding: 0;
+}
+
+
+/**
+* 标签列表
+*/
+
+.owo-page-main ul.tag-list {
+  list-style: none;
+  margin: 0;
+  padding: 20px;
+  background-color: #FFF;
+}
+
+.owo-page-main ul.tag-list li {
+  display: inline-block;
+  margin: 0 0 5px 0;
+  padding: 5px 5px 5px 10px;
+  cursor: pointer;
+}
+.owo-page-main ul.tag-list li:hover {
+  background-color: #E9E9E6;
+}
+
+.owo-page-main ul.tag-list li input {
+  display: none;
+}
+
+
+.owo-page-main ul.tag-list li.checked {
+  background-color: #FFFBCC;
+}
+
+.owo-page-main ul.tag-list li.size-5 { font-size: 1em; }
+.owo-page-main ul.tag-list li.size-10 { font-size: 1.2em; }
+.owo-page-main ul.tag-list li.size-20 { font-size: 1.4em; }
+.owo-page-main ul.tag-list li.size-30 { font-size: 1.6em; }
+.owo-page-main ul.tag-list li.size-0 { font-size: 1.8em; }
+
+.owo-page-main .tag-edit-link { visibility: hidden; }
+.owo-page-main li:hover .tag-edit-link { visibility: visible; }
+
+.owo-attachment-photo {
+  border: 1px solid #E6E6E3;
+  max-width: 100%;
+}
+
+
+/*
+* Upload
+*/
+#upload-panel {
+  border: 1px dashed #D9D9D6;
+  background-color: #FFF;
+  color: #999;
+  font-size: .92857em;
+  &.drag {
+    background-color: #FFFBCC;
+  }
+}
+
+.upload-area {
+  padding: 15px;
+  text-align: center;
+}
+
+#file-list {
+  list-style: none;
+  margin: 0 10px;
+  padding: 0;
+  max-height: 450px;
+  overflow: auto;
+  word-break: break-all;
+  li,
+  .insert {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+  li {
+    padding: 8px 0;
+    border-top: 1px dashed #D9D9D6;
+  }
+  .insert {
+    display: block;
+    max-width: 100%;
+  }
+  .file {
+    margin-left: 5px;
+  }
+  .info {
+    text-transform: uppercase;
+  }
+}
+
+#btn-fullscreen-upload {
+  visibility: hidden;
+}
+
+
+/**
+* 附件管理
+*/
+.edit-media button { margin-right: 6px; }
+
+/* 拖动调整 textarea 大小 */
+.resize {
+  display: block;
+  margin: 2px auto 0;
+  padding: 2px 0;
+  border: 1px solid #D9D9D6;
+  border-width: 1px 0;
+  width: 60px;
+  cursor: row-resize;
+  i {
+    display: block;
+    height: 1px;
+    background-color: #D9D9D6;
+  }
+}
+
+/* 拖动排序 */
+.tDnD_whileDrag {
+  background-color: #FFFBCC;
+}
+
+@media (max-width: $screen-phone - 1px) {
+  .owo-list-operate {
+    .search {
+      margin-top: 10px;
+    }
+  }
+
+  .owo-table-wrap {
+    padding: 10px;
+    margin: 0 -10px;
+  }
+
+  .owo-option-submit {
+    button[type="submit"] {
+      width: 100%;
+    }
+  }
+
+  .profile-avatar {
+    width: 110px;
+    height: 110px;
+  }
+}
+
+/**
+* 导入扩展样式
+*/
+
+@import "icons";
+@import "components";
+@import "hidden";
