@@ -1,5 +1,9 @@
 <?php
 
+use OWO\Common;
+use OWO\Db;
+use OWO\Request;
+
 if (!file_exists(dirname(__FILE__) . '/config.inc.php')) {
     // site root path
     define('__OWO_ROOT_DIR__', dirname(__FILE__));
@@ -17,10 +21,10 @@ if (!file_exists(dirname(__FILE__) . '/config.inc.php')) {
     require_once __OWO_ROOT_DIR__ . '/var/OWO/Common.php';
 
     // init
-    \OWO\Common::init();
+    Common::init();
 } else {
     require_once dirname(__FILE__) . '/config.inc.php';
-    $installDb = \OWO\Db::get();
+    $installDb = Db::get();
 }
 
 /**
@@ -30,13 +34,13 @@ if (!file_exists(dirname(__FILE__) . '/config.inc.php')) {
  */
 function install_get_lang(): string
 {
-    $serverLang = \OWO\Request::getInstance()->getServer('OWO_LANG');
+    $serverLang = Request::getInstance()->getServer('OWO_LANG');
 
     if (!empty($serverLang)) {
         return $serverLang;
     } else {
         $lang = 'zh_CN';
-        $request = \OWO\Request::getInstance();
+        $request = Request::getInstance();
 
         if ($request->is('lang')) {
             $lang = $request->get('lang');
@@ -54,7 +58,7 @@ function install_get_lang(): string
  */
 function install_get_site_url(): string
 {
-    $request = \OWO\Request::getInstance();
+    $request = Request::getInstance();
     return install_is_cli() ? $request->getServer('OWO_SITE_URL', 'http://localhost') : $request->getRequestRoot();
 }
 
@@ -65,7 +69,7 @@ function install_get_site_url(): string
  */
 function install_is_cli(): bool
 {
-    return \OWO\Request::getInstance()->isCli();
+    return Request::getInstance()->isCli();
 }
 
 /**
@@ -247,7 +251,7 @@ function install_get_default_options(): array
             'charset' => 'UTF-8',
             'contentType' => 'text/html',
             'gzip' => 0,
-            'generator' => 'OWO ' . \OWO\Common::VERSION,
+            'generator' => 'OWO ' . Common::VERSION,
             'title' => 'Hello World',
             'description' => 'Your description here.',
             'keywords' => 'OWO,php,blog',
@@ -298,7 +302,7 @@ function install_get_default_options(): array
             'actionTable' => 'a:0:{}',
             'panelTable' => 'a:0:{}',
             'attachmentTypes' => '@image@',
-            'secret' => \OWO\Common::randString(32, true),
+            'secret' => Common::randString(32, true),
             'installed' => 0,
             'allowXmlRpc' => 2
         ];
@@ -365,7 +369,7 @@ function install_get_current_db_driver(): string
     global $installDb;
 
     if (empty($installDb)) {
-        $driver = \OWO\Request::getInstance()->get('driver');
+        $driver = Request::getInstance()->get('driver');
         $drivers = install_get_db_drivers();
 
         if (empty($driver) || !isset($drivers[$driver])) {
@@ -513,7 +517,7 @@ function install_success($step, ?array $config = null)
 
     if (install_is_cli()) {
         if ($step == 3) {
-            \OWO\Db::set($installDb);
+            Db::set($installDb);
         }
 
         if ($step > 0) {
@@ -756,7 +760,7 @@ function install_step_1_perform()
     }
 
     $uploadDir = '/usr/uploads';
-    $realUploadDir = \OWO\Common::url($uploadDir, __OWO_ROOT_DIR__);
+    $realUploadDir = Common::url($uploadDir, __OWO_ROOT_DIR__);
     $writeable = true;
     if (is_dir($realUploadDir)) {
         if (!is_writeable($realUploadDir) || !is_readable($realUploadDir)) {
@@ -793,7 +797,7 @@ function install_step_2()
     $type = install_get_db_type($adapter);
 
     if (!empty($installDb)) {
-        $config = $installDb->getConfig(\OWO\Db::WRITE)->toArray();
+        $config = $installDb->getConfig(Db::WRITE)->toArray();
         $config['prefix'] = $installDb->getPrefix();
         $config['adapter'] = $adapter;
     }
@@ -913,7 +917,7 @@ function install_step_2_perform()
 {
     global $installDb;
 
-    $request = \OWO\Request::getInstance();
+    $request = Request::getInstance();
     $drivers = install_get_db_drivers();
 
     $configMap = [
@@ -1060,8 +1064,8 @@ function install_step_2_perform()
     } elseif (empty($installDb)) {
         // detect db config
         try {
-            $installDb = new \OWO\Db($config['dbAdapter'], $config['dbPrefix']);
-            $installDb->addServer($dbConfig, \OWO\Db::READ | \OWO\Db::WRITE);
+            $installDb = new Db($config['dbAdapter'], $config['dbPrefix']);
+            $installDb->addServer($dbConfig, Db::READ | Db::WRITE);
             $installDb->query('SELECT 1=1');
         } catch (\OWO\Db\Adapter\ConnectionException $e) {
             install_raise_error(_t('对不起, 无法连接数据库, 请先检查数据库配置再继续进行安装'));
@@ -1128,7 +1132,7 @@ function install_step_2_perform()
         foreach ($scripts as $script) {
             $script = trim($script);
             if ($script) {
-                $installDb->query($script, \OWO\Db::WRITE);
+                $installDb->query($script, Db::WRITE);
             }
         }
     } catch (\OWO\Db\Exception $e) {
@@ -1224,8 +1228,8 @@ function install_step_3_perform()
 {
     global $installDb;
 
-    $request = \OWO\Request::getInstance();
-    $defaultPassword = \OWO\Common::randString(8);
+    $request = Request::getInstance();
+    $defaultPassword = Common::randString(8);
     $options = \Widget\Options::alloc();
 
     if (install_is_cli()) {
@@ -1366,7 +1370,7 @@ function install_step_3_perform()
             'password' => $config['userPassword'],
             'referer' => $options->adminUrl
         ]);
-    $loginUrl = \OWO\Common::buildUrl($parts);
+    $loginUrl = Common::buildUrl($parts);
 
     install_success(0, [
         $config['userName'],
@@ -1414,7 +1418,7 @@ function install_dispatch()
     if (install_is_cli()) {
         install_step_1_perform();
     } else {
-        $request = \OWO\Request::getInstance();
+        $request = Request::getInstance();
         $step = $request->get('step');
 
         $action = 1;
